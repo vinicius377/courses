@@ -1,7 +1,8 @@
-import { videoMock } from "test/mocks/VideoMock"
-import { VideoRepositoryMock } from "test/mocks/VideoRepositoryMock"
+import { videoMock } from "test/mocks/entity/VideoMock"
+import { VideoRepositoryMock } from "test/mocks/repository/VideoRepositoryMock"
 import { UploadVideo } from "./UploadVideo"
-import { VideoHostServiceMock } from "test/mocks/VideoHostService"
+import { VideoHostServiceMock } from "test/mocks/services/VideoHostService"
+import { Readable } from "stream"
 
 describe(UploadVideo.name, () => {
   let uploadVideo!: UploadVideo
@@ -9,7 +10,7 @@ describe(UploadVideo.name, () => {
   const repo = new VideoRepositoryMock()
   const videoHostService = new VideoHostServiceMock()
   
-  const videoData = new ReadableStream()
+  const videoData = new Readable()
 
   beforeEach(() => {
     uploadVideo = new UploadVideo(repo, videoHostService)

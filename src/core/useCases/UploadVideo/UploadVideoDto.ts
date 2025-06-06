@@ -5,6 +5,7 @@ interface VideoDto {
   description: string
   title: string;
   courseId: string
+  sectionId: string
 }
 
 export interface UploadVideoDto {

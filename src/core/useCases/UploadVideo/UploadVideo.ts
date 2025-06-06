@@ -2,7 +2,6 @@ import { VideoHostService } from "core/services/VideoHostService";
 import { VideoEntity } from "../../entity/Video";
 import { UploadVideoDto } from "./UploadVideoDto";
 import { VideoRepository } from "core/repositories/VideoRepository";
-import { BadRequestException } from "infra/exceptions/BadRequestException";
 import { ConflictException } from "infra/exceptions/ConflictException";
 
 export class UploadVideo {
@@ -17,19 +16,20 @@ export class UploadVideo {
       author: video.info.author,
       courseId: video.info.courseId,
       title: video.info.author,
+      sectionId: video.info.sectionId
     })
-    await this.alreadyHaveVideoWithSameTitle(videoInfo)
+    await this.alreadyHaveVideoWithSameTitleAndCourseId(videoInfo)
 
-    this.videoHostService.upload(video.data, () => this.saveVideoInfo(videoInfo))
+    await this.videoHostService.upload(video.data, video.info)
+    await this.saveVideoInfo(videoInfo)
   }
 
-  private async alreadyHaveVideoWithSameTitle(video: VideoEntity) {
+  private async alreadyHaveVideoWithSameTitleAndCourseId(video: VideoEntity) {
     const persistedVideo = await this.videoRepo.findByTitleAndCourse(
       video.title,
       video.courseId
     )
 
-    return
     if (persistedVideo) {
       throw new ConflictException({ error: "ALREADY_PERSISTED", message: "Titulo ja cadastrado para esse curso"})
     }

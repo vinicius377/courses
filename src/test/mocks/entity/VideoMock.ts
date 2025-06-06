@@ -5,4 +5,5 @@ export const videoMock = new VideoEntity({
   title: "title",
   description: "description",
   author: "autor",
+  sectionId: "2"
 })

@@ -4,7 +4,6 @@ import { VideoRepository } from "core/repositories/VideoRepository";
 
 export class VideoRepositoryLocal implements VideoRepository {
   async create(video: VideoEntity): Promise<void> {
-     console.log(video) 
   }
 
   async findByTitleAndCourse(title: string, courseId: string): Promise<VideoEntity> {
