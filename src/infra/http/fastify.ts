@@ -16,7 +16,7 @@ const app = fastify({
   }
 })
 app.register(fastifyCors)
-app.register(fastifyMultipart, { attachFieldsToBody: "keyValues", limits: { fileSize: 20 * 1024 * 1024 } })
+app.register(fastifyMultipart,)
 
 const uploadVideoController = new UploadVideoController()
 app.post(

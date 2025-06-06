@@ -1,7 +1,7 @@
 import { Readable } from "stream";
 
 interface VideoDto {
-  autor: string
+  author: string
   description: string
   title: string;
   courseId: string

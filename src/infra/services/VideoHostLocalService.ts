@@ -9,7 +9,6 @@ export class VideoHostLocalService implements VideoHostService {
     video.pipe(writable)
 
     writable.on("finish", () => {
-      console.log("done!")
       cb()
     })
   }

@@ -1,7 +1,7 @@
 import { randomUUID } from "crypto";
 
 export class VideoEntity {
-  autor: string;
+  author: string;
   courseId: string;
   description: string;
   title: string;
