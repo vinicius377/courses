@@ -1,6 +1,4 @@
 import { CourseEntity } from "core/entity/Course";
+import { CreateCourseRepository } from "core/useCases/CreateCourse/CreateCourseRepository";
 
-export interface CourseRepository {
-  create(course: CourseEntity): Promise<void>
-  findByTitleAndUserId(title: string, courseId: string): Promise<CourseEntity>
-}
+export interface CourseRepository extends CreateCourseRepository {}

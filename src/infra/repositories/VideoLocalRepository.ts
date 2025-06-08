@@ -1,6 +1,6 @@
-import { videoMock } from "test/mocks/VideoMock";
 import { VideoEntity } from "core/entity/Video";
 import { VideoRepository } from "core/repositories/VideoRepository";
+import { videoMock } from "test/mocks/entity/VideoMock";
 
 export class VideoRepositoryLocal implements VideoRepository {
   async create(video: VideoEntity): Promise<void> {

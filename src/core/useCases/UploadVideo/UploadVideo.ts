@@ -1,12 +1,12 @@
 import { VideoHostService } from "core/services/VideoHostService";
 import { VideoEntity } from "../../entity/Video";
 import { UploadVideoDto } from "./UploadVideoDto";
-import { VideoRepository } from "core/repositories/VideoRepository";
 import { ConflictException } from "infra/exceptions/ConflictException";
+import { UploadVideoRepository } from "./UploadVideoRepository";
 
 export class UploadVideo {
   constructor(
-    private readonly videoRepo: VideoRepository,
+    private readonly videoRepo: UploadVideoRepository,
     private readonly videoHostService: VideoHostService
   ) { }
 
@@ -31,7 +31,7 @@ export class UploadVideo {
     )
 
     if (persistedVideo) {
-      throw new ConflictException({ error: "ALREADY_PERSISTED", message: "Titulo ja cadastrado para esse curso"})
+      throw new ConflictException({ error: "ALREADY_PERSISTED", message: "Titulo ja cadastrado para esse curso" })
     }
   }
 

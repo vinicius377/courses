@@ -1,11 +1,11 @@
 import { CourseEntity } from "core/entity/Course";
-import { CourseRepository } from "core/repositories/CourseRepository";
 import { BadRequestException } from "infra/exceptions/BadRequestException";
 import { CreateCourseDto } from "./CreateCourseDto";
+import { CreateCourseRepository } from "./CreateCourseRepository";
 
 export class CreateCourse {
   constructor(
-    private readonly courseRepo: CourseRepository
+    private readonly courseRepo: CreateCourseRepository
   ) { }
 
   async execute(courseDto: CreateCourseDto) {

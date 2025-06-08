@@ -1,6 +1,3 @@
-import { VideoEntity } from "../entity/Video";
+import { VideoUploadRepository } from "core/useCases/UploadVideo/UploadVideoRepository";
 
-export interface VideoRepository {
-  create(video: VideoEntity): Promise<void>
-  findByTitleAndCourse(title: string, courseId: string): Promise<VideoEntity | null>
-}
+export interface VideoRepository extends VideoUploadRepository {}
